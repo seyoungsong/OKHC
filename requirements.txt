@@ -1,0 +1,10 @@
+fasttext
+huggingface_hub[cli]
+ijson
+loguru
+numpy
+pandas
+pyahocorasick
+pyarrow
+regex
+tqdm
