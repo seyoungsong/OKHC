@@ -39,5 +39,12 @@ This repository contains the code used for preprocessing, language and script id
 ## Citation
 
 ```
-To Be Announced
+@article{song2025open,
+  author  = {Seyoung Song and Nawon Kim and Songeun Chae and Kiwoong Park and Jiho Jin and Haneul Yoo and Kyunghyun Cho and Alice Oh},
+  journal = {ArXiv preprint},
+  title   = {Open Korean Historical Corpus: A Millennia-Scale Diachronic Collection of Public Domain Texts},
+  url     = {https://arxiv.org/abs/2510.24541},
+  volume  = {abs/2510.24541},
+  year    = {2025}
+}
 ```
