@@ -476,22 +476,22 @@ def _create_dummy_resources(res_dir: Path):
     res_dir.mkdir(exist_ok=True)
 
     # Idu dictionary (JSONL format)
-    # '爲' (hal/hwal) - common grammar
-    # '是' (i/si) - common grammar
-    # '隱' (eun/un) - common grammar
-    # '敎' (gyo) - common noun
+    # '等乙' (dunguhl) - common grammar
+    # '去乙' (guyeol) - common grammar
+    # '爲去乎' (wigeoho) - common grammar
+    # '水刺' (sura) - common noun
     (res_dir / "idu_dictionary.jsonl").write_text(
-        '{"idu_text": "爲"}\n{"idu_text": "是"}\n{"idu_text": "隱"}\n{"idu_text": "敎"}\n', encoding="utf-8"
+        '{"idu_text": "等乙"}\n{"idu_text": "去乙"}\n{"idu_text": "爲去乎"}\n{"idu_text": "水刺"}\n', encoding="utf-8"
     )
 
     # Idu heads (for '乙' rule)
-    (res_dir / "idu_heads.json").write_text('["爲", "是"]', encoding="utf-8")
+    (res_dir / "idu_heads.json").write_text('["爲", "去"]', encoding="utf-8")
 
     # General exclusions (common CC words)
-    (res_dir / "idu_exclusions.json").write_text('["不知"]', encoding="utf-8")
+    (res_dir / "idu_exclusions.json").write_text('["不得"]', encoding="utf-8")
 
     # Noun exclusions (words that are Idu but not grammar)
-    (res_dir / "idu_noun_exclusions.json").write_text('[{"text": "敎"}]', encoding="utf-8")
+    (res_dir / "idu_noun_exclusions.json").write_text('[{"text": "水刺"}]', encoding="utf-8")
     print(f"Created dummy resource files in: {res_dir.resolve()}")
 
 
@@ -521,11 +521,11 @@ if __name__ == "__main__":
 
     # 3. Define test cases
     test_cases = {
-        "pure_cc": "不知何處. 王曰. 吾遣汝.",  # Classical Chinese, low Idu score
-        "idu_grammar": "王曰. 吾遣汝爲. 是乎.",  # '爲' and '是' are Idu grammar
-        "idu_noun": "王曰. 吾見其敎.",  # '敎' is an Idu noun, should score 0
-        "idu_guard_false": "王曰. 爲乙丑.",  # '爲乙' + Earthly Branch = CC
-        "idu_guard_true": "王曰. 爲乙去.",  # '爲乙' + other = Idu
+        "pure_cc": "事勢亦無所不得已也",  # Classical Chinese, low Idu score
+        "idu_grammar": "田地等乙許與爲去乎",  # '等乙' and '爲去乎' are Idu grammar
+        "idu_noun": "水刺間所用銀鉢里蓋臺一坐",  # '水刺' is an Idu noun, should score 0
+        "idu_guard_false": "去乙丑年徙于安邊",  # '去乙' + Earthly Branch = CC
+        "idu_guard_true": "圍犯爲去乙多數射中勝戰追擊",  # '去乙' + other = Idu
         "low_hanja": "Hello this is English.",  # Should be 'other'
         "hangul_mix": "王曰. 吾遣汝爲. 그렇다.",  # Mixed, but should pass Hanja gate
     }
