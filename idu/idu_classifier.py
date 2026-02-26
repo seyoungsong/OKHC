@@ -366,7 +366,7 @@ class IduClassifier:
             filtered_spans.append((st, en, tok, src))
 
         # 3. Separate dictionary hits for scoring
-        toks = [t for _, _, t, src in filtered_spans if src == "dictionary"]
+        toks = [t for _, _, t, src in filtered_spans if src in ["dictionary","idu_head_guard"]]
         toks = [t for t in toks if t not in self.exclusions]
 
         # 4. Separate hits into lexical (noun) vs. grammatical (morpheme)
